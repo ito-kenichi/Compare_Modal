@@ -25,39 +25,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+        appBar: AppBar(
+            title: Text('Image Popup example')
+        ),
+        backgroundColor: Colors.grey[800],
+        body: CircleAvatar(
+            child: GestureDetector(
+              onTap: () async {
+                await showDialog(
+                    context: context,
+                    builder: (_) => ImageDialog()
+                );
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+            radius: 50.0,
+            //Photo by Tamas Tuzes-Katai on Unsplash
+            backgroundImage: AssetImage('assets/image001.jpg')
+        )
+    );
+  }
+}
+
+class ImageDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        width: 200,
+        height: 200,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: ExactAssetImage('assets/image001.jpg'),
+                fit: BoxFit.cover
+            )
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

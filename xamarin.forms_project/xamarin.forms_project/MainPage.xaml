@@ -19,5 +19,6 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Button x:Name="RgPlugins" Command="{Binding PopupCommand}" Text="Rg.Plugins.Popup" />
     </StackLayout>
 </ContentPage>
