@@ -33,18 +33,28 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text('Image Popup example')
         ),
         backgroundColor: Colors.grey[800],
-        body: CircleAvatar(
-            child: GestureDetector(
-              onTap: () async {
-                await showDialog(
-                    context: context,
-                    builder: (_) => ImageDialog()
-                );
-              },
-            ),
-            radius: 50.0,
-            //Photo by Tamas Tuzes-Katai on Unsplash
-            backgroundImage: AssetImage('assets/image001.jpg')
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                onPressed:  () async {
+                  await showDialog(
+                      context: context,
+                      builder: (_) => ImageDialog()
+                  );
+                },
+                color: Colors.blue,
+                child: Text(
+                  'Open Modal',
+                  style: TextStyle(
+                      color:Colors.white,
+                      fontSize: 20.0
+                  ),
+                ),
+              ),
+            ],
+          ),
         )
     );
   }
@@ -54,15 +64,10 @@ class ImageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Container(
-        width: 200,
-        height: 200,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: ExactAssetImage('assets/image001.jpg'),
-                fit: BoxFit.cover
-            )
-        ),
+      child: Image.network(
+        'https://picsum.photos/250?image=9',
+        width: 500,
+        height: 500,
       ),
     );
   }
