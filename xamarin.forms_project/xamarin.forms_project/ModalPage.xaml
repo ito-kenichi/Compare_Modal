@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="xamarin.forms_project.ModalPage">
+    <StackLayout x:Name="layout">
+        <Image Source="https://s23527.pcdn.co/wp-content/uploads/2017/03/wesaturate.jpg.optimal.jpg" />
+        <Button x:Name="closeButton" Command="{Binding PopupCommand}" Text="Close Modal" Clicked="OnClicked" />
+    </StackLayout>
+</ContentPage>
